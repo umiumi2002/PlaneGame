@@ -45,7 +45,7 @@ Partial Class Form1
         '
         Me.plane.AutoSize = True
         Me.plane.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane.Location = New System.Drawing.Point(153, 271)
+        Me.plane.Location = New System.Drawing.Point(167, 335)
         Me.plane.Name = "plane"
         Me.plane.Size = New System.Drawing.Size(26, 18)
         Me.plane.TabIndex = 1

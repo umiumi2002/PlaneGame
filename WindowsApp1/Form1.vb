@@ -25,21 +25,6 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         plane.Top -= 3
 
-        If plane.Top <= 252 Then
-            Timer1.Enabled = False
-
-            Panel1.Visible = True
-
-
-
-            Dim newButton As New Button()
-            newButton.Text = "離陸許可"
-            newButton.Location = New Point(800, 40) ' ボタンの位置を設定してください
-            Me.Controls.Add(newButton)
-
-
-
-        End If
 
 
     End Sub
