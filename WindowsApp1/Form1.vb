@@ -13,40 +13,41 @@ Public Class Form1
 
     End Sub
 
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MovePlaneUp()
-    End Sub
-
-    Private Sub MovePlaneUp()
-        ' label2を10ピクセル上に移動させる
-        Timer1.Enabled = True
-    End Sub
-
-
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        plane.Top -= 3
 
         If plane.Top <= 252 Then
             Timer1.Enabled = False
-
             Panel1.Visible = True
-
-
-
-            Dim newButton As New Button()
-            newButton.Text = "離陸許可"
-            newButton.Location = New Point(800, 40) ' ボタンの位置を設定してください
-            Me.Controls.Add(newButton)
-
-
-
+            Label1.Text = plane.Name
+        Else
+            Timer1.Enabled = True
         End If
+    End Sub
+
+    Private Sub MovePlaneUp()
+        plane.Top -= 3
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        MovePlaneUp()
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        MovePlaneRight()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Timer3.Enabled = True
 
 
     End Sub
 
+    Private Sub MovePlaneRight()
+        plane.Left += 3
+    End Sub
 
-
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        MovePlaneUp()
+    End Sub
 End Class
