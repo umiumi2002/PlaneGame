@@ -27,6 +27,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.plane = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -57,7 +58,7 @@ Partial Class Form1
         Me.plane.BackColor = System.Drawing.Color.Transparent
         Me.plane.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.plane.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane.Location = New System.Drawing.Point(89, 287)
+        Me.plane.Location = New System.Drawing.Point(124, 531)
         Me.plane.Margin = New System.Windows.Forms.Padding(0)
         Me.plane.Name = "plane"
         Me.plane.Size = New System.Drawing.Size(55, 15)
@@ -66,22 +67,31 @@ Partial Class Form1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
-        Me.Panel1.Location = New System.Drawing.Point(685, 12)
+        Me.Panel1.Location = New System.Drawing.Point(527, 28)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 133)
+        Me.Panel1.Size = New System.Drawing.Size(495, 344)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(61, 47)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(357, 23)
+        Me.TextBox1.TabIndex = 5
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(13, 14)
+        Me.Label1.Location = New System.Drawing.Point(18, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(48, 15)
         Me.Label1.TabIndex = 4
@@ -89,27 +99,27 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(54, 35)
+        Me.Button2.Location = New System.Drawing.Point(171, 170)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(88, 23)
+        Me.Button2.Size = New System.Drawing.Size(155, 48)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "離陸許可"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(54, 93)
+        Me.Button4.Location = New System.Drawing.Point(171, 276)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(88, 23)
+        Me.Button4.Size = New System.Drawing.Size(155, 46)
         Me.Button4.TabIndex = 2
         Me.Button4.Text = "滑走路前待機"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(54, 64)
+        Me.Button3.Location = New System.Drawing.Point(171, 224)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(88, 23)
+        Me.Button3.Size = New System.Drawing.Size(155, 46)
         Me.Button3.TabIndex = 1
         Me.Button3.Text = "滑走路内待機"
         Me.Button3.UseVisualStyleBackColor = True
@@ -119,13 +129,11 @@ Partial Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(984, 845)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox1.Size = New System.Drawing.Size(1030, 669)
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
         '
@@ -135,7 +143,7 @@ Partial Class Form1
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label2.Location = New System.Drawing.Point(481, 415)
+        Me.Label2.Location = New System.Drawing.Point(958, 431)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(22, 15)
@@ -148,7 +156,7 @@ Partial Class Form1
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label3.Location = New System.Drawing.Point(89, 190)
+        Me.Label3.Location = New System.Drawing.Point(310, 185)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(22, 15)
@@ -165,7 +173,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(984, 845)
+        Me.ClientSize = New System.Drawing.Size(1029, 666)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
@@ -197,4 +205,5 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
+    Friend WithEvents TextBox1 As TextBox
 End Class
