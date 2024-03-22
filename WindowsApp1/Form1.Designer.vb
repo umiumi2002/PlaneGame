@@ -25,7 +25,7 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Start = New System.Windows.Forms.Button()
-        Me.plane1 = New System.Windows.Forms.Label()
+        Me.plane0 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Handoff_dep = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -36,7 +36,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.plane1 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
@@ -55,18 +55,18 @@ Partial Class Form1
         Me.Start.Text = "Start"
         Me.Start.UseVisualStyleBackColor = True
         '
-        'plane1
+        'plane0
         '
-        Me.plane1.AutoSize = True
-        Me.plane1.BackColor = System.Drawing.Color.Transparent
-        Me.plane1.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.plane1.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane1.Location = New System.Drawing.Point(124, 531)
-        Me.plane1.Margin = New System.Windows.Forms.Padding(0)
-        Me.plane1.Name = "plane1"
-        Me.plane1.Size = New System.Drawing.Size(68, 15)
-        Me.plane1.TabIndex = 1
-        Me.plane1.Text = "● plane1"
+        Me.plane0.AutoSize = True
+        Me.plane0.BackColor = System.Drawing.Color.Transparent
+        Me.plane0.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.plane0.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.plane0.Location = New System.Drawing.Point(125, 530)
+        Me.plane0.Margin = New System.Windows.Forms.Padding(0)
+        Me.plane0.Name = "plane0"
+        Me.plane0.Size = New System.Drawing.Size(68, 15)
+        Me.plane0.TabIndex = 1
+        Me.plane0.Text = "● plane0"
         '
         'Panel1
         '
@@ -168,18 +168,18 @@ Partial Class Form1
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "●"
         '
-        'Label3
+        'plane1
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label3.Location = New System.Drawing.Point(923, 393)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(22, 15)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "●"
+        Me.plane1.AutoSize = True
+        Me.plane1.BackColor = System.Drawing.Color.Transparent
+        Me.plane1.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.plane1.ForeColor = System.Drawing.SystemColors.Highlight
+        Me.plane1.Location = New System.Drawing.Point(125, 570)
+        Me.plane1.Margin = New System.Windows.Forms.Padding(0)
+        Me.plane1.Name = "plane1"
+        Me.plane1.Size = New System.Drawing.Size(68, 15)
+        Me.plane1.TabIndex = 5
+        Me.plane1.Text = "● plane1"
         '
         'Timer2
         '
@@ -210,9 +210,9 @@ Partial Class Form1
         Me.Controls.Add(Me.Start)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.plane1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.plane0)
         Me.Controls.Add(Me.PictureBox1)
         Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Name = "Form1"
@@ -227,7 +227,7 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents Start As Button
-    Friend WithEvents plane1 As Label
+    Friend WithEvents plane0 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Timer1 As Timer
     Friend WithEvents PictureBox1 As PictureBox
@@ -236,7 +236,7 @@ Partial Class Form1
     Friend WithEvents Line_up_and_wait As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents plane1 As Label
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
     Friend WithEvents TextBox1 As TextBox
