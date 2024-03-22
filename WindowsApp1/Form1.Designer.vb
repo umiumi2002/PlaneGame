@@ -40,6 +40,7 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.show_text = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -84,7 +85,7 @@ Partial Class Form1
         '
         'Handoff_dep
         '
-        Me.Handoff_dep.Location = New System.Drawing.Point(171, 220)
+        Me.Handoff_dep.Location = New System.Drawing.Point(183, 222)
         Me.Handoff_dep.Name = "Handoff_dep"
         Me.Handoff_dep.Size = New System.Drawing.Size(155, 50)
         Me.Handoff_dep.TabIndex = 6
@@ -198,6 +199,9 @@ Partial Class Form1
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "ゲーム説明" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Startボタンを押すとゲーム開始" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "各planeを押すと場合に応じた指示が出せる" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
+        'show_text
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -238,4 +242,5 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Handoff_dep As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents show_text As Timer
 End Class
