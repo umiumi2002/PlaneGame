@@ -12,7 +12,9 @@ Public Class Form1
     Private Handoff_dep_clicked As Boolean
     Private cleared_to_land_clicked As Boolean
     Public Property Angle As Integer
-
+    Public Property Handoff_gnd_clicked As Boolean
+    ' 音源リソースを取り込む
+    Dim mediaStream As System.IO.Stream = My.Resources.carenginestart1
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' フォームのサイズをPictureBoxのサイズに合わせる
@@ -34,6 +36,8 @@ Public Class Form1
         Timer4.Enabled = True
         TextBox2.AppendText(plane4.Name & ">> Tower," & plane4.Name & " , on final RWY 32 " & Environment.NewLine)
         Start.Hide()
+        ' 音源を再生する
+        My.Computer.Audio.Play(mediaStream, AudioPlayMode.Background)
     End Sub
 
     Private Sub MovePlaneUp()
@@ -94,7 +98,7 @@ Public Class Form1
         Handoff_dep_clicked = True
         show_text.Interval = 2000 ' 2秒間隔
         show_text.Enabled = True
-        TextBox1.AppendText(plane0.Name & " >> contact DEP " & Environment.NewLine)
+        TextBox1.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
 
     End Sub
 
@@ -181,7 +185,7 @@ Public Class Form1
 
     Private Sub show_text_Tick(sender As Object, e As EventArgs) Handles show_text.Tick
         If Handoff_dep_clicked Then
-            TextBox1.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
+
             ChangeToBlue()
         ElseIf takeoff_clicked Then
             TextBox1.AppendText(plane0.Name & ">> Cleared for take off runway 32, " & plane0.Name & Environment.NewLine)
@@ -193,6 +197,9 @@ Public Class Form1
         End If
         If cleared_to_land_clicked Then
             TextBox2.AppendText(plane4.Name & ">>  Cleared to land, Runway 32," & plane4.Name & Environment.NewLine)
+        ElseIf Handoff_gnd_clicked Then
+            TextBox2.AppendText(plane4.Name & "Nice!!!!" & plane4.Name & Environment.NewLine)
+            plane4.ForeColor = SystemColors.Highlight
         End If
         show_text.Enabled = False
 
@@ -229,20 +236,40 @@ Public Class Form1
 
     Private Sub Timer5_Tick(sender As Object, e As EventArgs) Handles Timer5.Tick
         plane4.ForeColor = SystemColors.Highlight
-        If plane4.Left >= 190 AndAlso plane4.Top <= 300 Then
-            plane4.Location = New Point(120, 365)
-            plane4.Left += 50
-        ElseIf plane4.Left >= 370 Then
-            plane4.Left += 10
+        If plane4.Left >= 190 And plane4.Top <= 300 Then
+            plane4.Location = New Point(100, 365)
+            go_around.Hide()
+        ElseIf plane4.Left <= 350 And plane4.Top > 300 Then
+            plane4.Left += 7
+        ElseIf plane4.Left <= 530 And plane4.Top > 300 Then
+            plane4.Left += 5
+        ElseIf plane4.Left <= 810 And plane4.Top > 300 Then
+            plane4.Left += 3
+        ElseIf plane4.Left > 810 Then
+            TextBox2.AppendText("TWR >>" & plane4.Name & " , contact ground  " & Environment.NewLine)
+            plane4.ForeColor = Color.Red
+            plane4.Top += 1
+            Handoff_gnd.Show()
+        Else plane4.Left += 1
         End If
     End Sub
 
     Private Sub cleared_to_land_Click_1(sender As Object, e As EventArgs) Handles cleared_to_land.Click
+        Timer4.Enabled = False
         Timer5.Enabled = True
-
-        TextBox2.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land " & Environment.NewLine)
+        TextBox2.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
         cleared_to_land_clicked = True
         show_text.Interval = 2000 ' 2秒間隔
         show_text.Enabled = True
+        cleared_to_land.Hide()
+        continue_approach.Hide()
+    End Sub
+
+    Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
+        TextBox2.AppendText(plane4.Name & " >> Contact ground , " & plane4.Name & ". " & Environment.NewLine)
+        Handoff_gnd_clicked = True
+        show_text.Enabled = True
+
+
     End Sub
 End Class

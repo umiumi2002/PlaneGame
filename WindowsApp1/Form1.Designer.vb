@@ -44,6 +44,7 @@ Partial Class Form1
         Me.demo = New System.Windows.Forms.Label()
         Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Handoff_gnd = New System.Windows.Forms.Button()
         Me.continue_approach = New System.Windows.Forms.Button()
         Me.go_around = New System.Windows.Forms.Button()
         Me.cleared_to_land = New System.Windows.Forms.Button()
@@ -57,7 +58,7 @@ Partial Class Form1
         '
         'Start
         '
-        Me.Start.Location = New System.Drawing.Point(386, 315)
+        Me.Start.Location = New System.Drawing.Point(388, 318)
         Me.Start.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Start.Name = "Start"
         Me.Start.Size = New System.Drawing.Size(173, 68)
@@ -218,7 +219,7 @@ Partial Class Form1
         '
         Me.demo.AutoSize = True
         Me.demo.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.demo.Location = New System.Drawing.Point(187, 158)
+        Me.demo.Location = New System.Drawing.Point(810, 371)
         Me.demo.Name = "demo"
         Me.demo.Size = New System.Drawing.Size(22, 15)
         Me.demo.TabIndex = 8
@@ -229,6 +230,7 @@ Partial Class Form1
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.Handoff_gnd)
         Me.Panel2.Controls.Add(Me.continue_approach)
         Me.Panel2.Controls.Add(Me.go_around)
         Me.Panel2.Controls.Add(Me.cleared_to_land)
@@ -239,6 +241,16 @@ Partial Class Form1
         Me.Panel2.Size = New System.Drawing.Size(447, 312)
         Me.Panel2.TabIndex = 9
         Me.Panel2.Visible = False
+        '
+        'Handoff_gnd
+        '
+        Me.Handoff_gnd.Location = New System.Drawing.Point(155, 212)
+        Me.Handoff_gnd.Name = "Handoff_gnd"
+        Me.Handoff_gnd.Size = New System.Drawing.Size(129, 45)
+        Me.Handoff_gnd.TabIndex = 5
+        Me.Handoff_gnd.Text = "GNDハンドオフ"
+        Me.Handoff_gnd.UseVisualStyleBackColor = True
+        Me.Handoff_gnd.Visible = False
         '
         'continue_approach
         '
@@ -346,4 +358,5 @@ Partial Class Form1
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Timer5 As Timer
+    Friend WithEvents Handoff_gnd As Button
 End Class

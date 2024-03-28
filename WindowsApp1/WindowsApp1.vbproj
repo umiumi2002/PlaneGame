@@ -119,5 +119,14 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carenginestart1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\airport1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\airplane-landing-6732.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
