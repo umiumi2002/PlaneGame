@@ -33,6 +33,7 @@ Public Class Form1
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
         ' ボタンが押されたら他の機能を有効にする
         Timer1.Enabled = True
+        Timer4.Interval = 500
         Timer4.Enabled = True
         TextBox2.AppendText(plane4.Name & ">> Tower," & plane4.Name & " , on final RWY 32 " & Environment.NewLine)
         Start.Hide()
@@ -45,16 +46,16 @@ Public Class Form1
     End Sub
     Private Sub MovePlaneRight()
         ' Timer2.Interval = 100
-        plane0.Left += 2
+        plane0.Left += 1
 
     End Sub
     Private Sub MovePlaneRunway()
         ' Timer2.Interval = 50
-        plane0.Left += 10
+        plane0.Left += 3
     End Sub
     Private Sub MovePlaneTakeOff()
         'Timer2.Interval = 1
-        plane0.Left += 30
+        plane0.Left += 20
     End Sub
     Private Sub ChangeToRed()
         ' 青から赤への色の変更の処理をここに記述する
@@ -99,20 +100,20 @@ Public Class Form1
         show_text.Interval = 2000 ' 2秒間隔
         show_text.Enabled = True
         TextBox1.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
-
+        Handoff_dep.Hide()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
 
         ' plane0を上に移動する
-        If plane0.Top > 365 Then
+        If plane0.Top > 400 Then
             ' plane0が190より上にある場合、上に移動
             MovePlaneUp()
         End If
 
         ' plane0が252に達した場合、一時停止
-        If plane0.Top < 425 Then
+        If plane0.Top < 460 Then
             Timer1.Enabled = False
             ChangeToRed()
             takeoff.Show()
@@ -125,20 +126,22 @@ Public Class Form1
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-        If plane0.Top <= 365 Then
+        If plane0.Top > 400 Then
             ' plane0が190以下かつ0より上にある場合、右に移動
-            MovePlaneRight()
-        Else
             MovePlaneUp()
+            ChangeToBlue()
+        Else
+            MovePlaneRight()
         End If
-        If plane0.Left >= 180 AndAlso plane0.Top >= 365 Then
+        If plane0.Left >= 260 And plane0.Top >= 350 Then
             MovePlaneRunway()
 
-        ElseIf plane0.Left >= 300 AndAlso plane0.Top >= 365 Then
+        ElseIf plane0.Left >= 420 And plane0.Top >= 350 Then
             MovePlaneTakeOff()
         End If
-        If plane0.Left >= 840 Then
-            plane0.Location = New Point(240, 155)
+        If plane0.Left >= 1110 Then
+            plane0.Location = New Point(375, 175)
+            Timer2.Interval = 500
             ChangeToRed()
             takeoff.Hide()
             Line_up_and_wait.Hide()
@@ -147,15 +150,17 @@ Public Class Form1
             TextBox1.AppendText("TWR >>" & plane0.Name & " ,contact to DEP " & Environment.NewLine)
             MovePlaneRight()
         End If
-        If plane0.Left >= 700 AndAlso plane0.Top <= 320 Then
+        If plane0.Left >= 800 AndAlso plane0.Top <= 350 Then
             plane0.Hide()
+            Timer2.Enabled = False
         End If
+
     End Sub
 
 
 
     Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
-        If plane0.Top >= 365 Then
+        If plane0.Top >= 400 Then
             MovePlaneUp()
         Else
             ChangeToRed()
@@ -185,20 +190,19 @@ Public Class Form1
 
     Private Sub show_text_Tick(sender As Object, e As EventArgs) Handles show_text.Tick
         If Handoff_dep_clicked Then
-
             ChangeToBlue()
-        ElseIf takeoff_clicked Then
+            TextBox1.AppendText(plane0.Name & " Nice!!!" & Environment.NewLine)
+        ElseIf takeoff_Clicked Then
             TextBox1.AppendText(plane0.Name & ">> Cleared for take off runway 32, " & plane0.Name & Environment.NewLine)
         ElseIf Hold_short_of_runway_clicked Then
             TextBox1.AppendText(plane0.Name & ">> Hold short of runway 32," & plane0.Name & Environment.NewLine)
 
         ElseIf Line_up_and_wait_clicked Then
-            TextBox1.AppendText(plane0.Name & ">>  Line up and wait, Runway 32," & plane0.Name & Environment.NewLine)
-        End If
-        If cleared_to_land_clicked Then
-            TextBox2.AppendText(plane4.Name & ">>  Cleared to land, Runway 32," & plane4.Name & Environment.NewLine)
+            TextBox1.AppendText(plane0.Name & ">>  Line up and wait, runway 32," & plane0.Name & Environment.NewLine)
+        ElseIf cleared_to_land_clicked Then
+            TextBox2.AppendText(plane4.Name & ">>  Cleared to land, runway 32," & plane4.Name & Environment.NewLine)
         ElseIf Handoff_gnd_clicked Then
-            TextBox2.AppendText(plane4.Name & "Nice!!!!" & plane4.Name & Environment.NewLine)
+            TextBox2.AppendText(plane4.Name & "Nice!!!!" & Environment.NewLine)
             plane4.ForeColor = SystemColors.Highlight
         End If
         show_text.Enabled = False
@@ -236,21 +240,29 @@ Public Class Form1
 
     Private Sub Timer5_Tick(sender As Object, e As EventArgs) Handles Timer5.Tick
         plane4.ForeColor = SystemColors.Highlight
-        If plane4.Left >= 190 And plane4.Top <= 300 Then
-            plane4.Location = New Point(100, 365)
+
+
+        If plane4.Left < 335 And plane4.Top <= 350 Then
+            Timer5.Interval = 500
+        Else timer5.Interval = 100
+        End If
+        If plane4.Left >= 335 And plane4.Top <= 350 Then
+            plane4.Location = New Point(210, 400)
             go_around.Hide()
-        ElseIf plane4.Left <= 350 And plane4.Top > 300 Then
+        ElseIf plane4.Left <= 500 And plane4.Top > 350 Then
             plane4.Left += 7
-        ElseIf plane4.Left <= 530 And plane4.Top > 300 Then
+        ElseIf plane4.Left <= 700 And plane4.Top > 350 Then
             plane4.Left += 5
-        ElseIf plane4.Left <= 810 And plane4.Top > 300 Then
+        ElseIf plane4.Left <= 1080 And plane4.Top > 350 Then
             plane4.Left += 3
-        ElseIf plane4.Left > 810 Then
+        Else plane4.Left += 1
+        End If
+        If plane4.Left > 1080 Then
             TextBox2.AppendText("TWR >>" & plane4.Name & " , contact ground  " & Environment.NewLine)
             plane4.ForeColor = Color.Red
+            plane4.Left -= 1
             plane4.Top += 1
             Handoff_gnd.Show()
-        Else plane4.Left += 1
         End If
     End Sub
 
@@ -266,10 +278,12 @@ Public Class Form1
     End Sub
 
     Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
-        TextBox2.AppendText(plane4.Name & " >> Contact ground , " & plane4.Name & ". " & Environment.NewLine)
-        Handoff_gnd_clicked = True
-        show_text.Enabled = True
 
+        Handoff_gnd_clicked = True
+        show_text.Interval = 1000
+        show_text.Enabled = True
+        TextBox2.AppendText(plane4.Name & " >> Contact ground , " & plane4.Name & ". " & Environment.NewLine)
+        Handoff_gnd.Hide()
 
     End Sub
 End Class

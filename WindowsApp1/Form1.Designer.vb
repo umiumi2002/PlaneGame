@@ -34,7 +34,6 @@ Partial Class Form1
         Me.Hold_short_of_runway = New System.Windows.Forms.Button()
         Me.Line_up_and_wait = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.plane4 = New System.Windows.Forms.Label()
         Me.plane1 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -51,14 +50,15 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer5 = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Start
         '
-        Me.Start.Location = New System.Drawing.Point(388, 318)
+        Me.Start.Location = New System.Drawing.Point(535, 379)
         Me.Start.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Start.Name = "Start"
         Me.Start.Size = New System.Drawing.Size(173, 68)
@@ -72,7 +72,7 @@ Partial Class Form1
         Me.plane0.BackColor = System.Drawing.Color.Transparent
         Me.plane0.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.plane0.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane0.Location = New System.Drawing.Point(100, 500)
+        Me.plane0.Location = New System.Drawing.Point(150, 500)
         Me.plane0.Margin = New System.Windows.Forms.Padding(0)
         Me.plane0.Name = "plane0"
         Me.plane0.Size = New System.Drawing.Size(68, 15)
@@ -87,16 +87,16 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.takeoff)
         Me.Panel1.Controls.Add(Me.Hold_short_of_runway)
         Me.Panel1.Controls.Add(Me.Line_up_and_wait)
-        Me.Panel1.Location = New System.Drawing.Point(442, 11)
+        Me.Panel1.Location = New System.Drawing.Point(729, 21)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(447, 312)
+        Me.Panel1.Size = New System.Drawing.Size(465, 329)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
         '
         'Handoff_dep
         '
-        Me.Handoff_dep.Location = New System.Drawing.Point(155, 208)
+        Me.Handoff_dep.Location = New System.Drawing.Point(178, 225)
         Me.Handoff_dep.Name = "Handoff_dep"
         Me.Handoff_dep.Size = New System.Drawing.Size(155, 50)
         Me.Handoff_dep.TabIndex = 6
@@ -125,7 +125,7 @@ Partial Class Form1
         '
         'takeoff
         '
-        Me.takeoff.Location = New System.Drawing.Point(155, 158)
+        Me.takeoff.Location = New System.Drawing.Point(178, 171)
         Me.takeoff.Name = "takeoff"
         Me.takeoff.Size = New System.Drawing.Size(155, 48)
         Me.takeoff.TabIndex = 3
@@ -135,7 +135,7 @@ Partial Class Form1
         '
         'Hold_short_of_runway
         '
-        Me.Hold_short_of_runway.Location = New System.Drawing.Point(155, 263)
+        Me.Hold_short_of_runway.Location = New System.Drawing.Point(178, 279)
         Me.Hold_short_of_runway.Name = "Hold_short_of_runway"
         Me.Hold_short_of_runway.Size = New System.Drawing.Size(155, 46)
         Me.Hold_short_of_runway.TabIndex = 2
@@ -145,7 +145,7 @@ Partial Class Form1
         '
         'Line_up_and_wait
         '
-        Me.Line_up_and_wait.Location = New System.Drawing.Point(155, 212)
+        Me.Line_up_and_wait.Location = New System.Drawing.Point(178, 227)
         Me.Line_up_and_wait.Name = "Line_up_and_wait"
         Me.Line_up_and_wait.Size = New System.Drawing.Size(155, 46)
         Me.Line_up_and_wait.TabIndex = 1
@@ -156,25 +156,13 @@ Partial Class Form1
         'Timer1
         '
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(948, 467)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
         'plane4
         '
         Me.plane4.AutoSize = True
         Me.plane4.BackColor = System.Drawing.Color.Transparent
         Me.plane4.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.plane4.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane4.Location = New System.Drawing.Point(30, 158)
+        Me.plane4.Location = New System.Drawing.Point(140, 175)
         Me.plane4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.plane4.Name = "plane4"
         Me.plane4.Size = New System.Drawing.Size(68, 15)
@@ -187,7 +175,7 @@ Partial Class Form1
         Me.plane1.BackColor = System.Drawing.Color.Transparent
         Me.plane1.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.plane1.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane1.Location = New System.Drawing.Point(100, 550)
+        Me.plane1.Location = New System.Drawing.Point(150, 560)
         Me.plane1.Margin = New System.Windows.Forms.Padding(0)
         Me.plane1.Name = "plane1"
         Me.plane1.Size = New System.Drawing.Size(68, 15)
@@ -206,7 +194,7 @@ Partial Class Form1
         Me.Label4.BackColor = System.Drawing.Color.Green
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(514, 134)
+        Me.Label4.Location = New System.Drawing.Point(849, 158)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(283, 64)
         Me.Label4.TabIndex = 7
@@ -219,7 +207,7 @@ Partial Class Form1
         '
         Me.demo.AutoSize = True
         Me.demo.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.demo.Location = New System.Drawing.Point(810, 371)
+        Me.demo.Location = New System.Drawing.Point(158, 432)
         Me.demo.Name = "demo"
         Me.demo.Size = New System.Drawing.Size(22, 15)
         Me.demo.TabIndex = 8
@@ -236,17 +224,17 @@ Partial Class Form1
         Me.Panel2.Controls.Add(Me.cleared_to_land)
         Me.Panel2.Controls.Add(Me.TextBox2)
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(442, 8)
+        Me.Panel2.Location = New System.Drawing.Point(729, 21)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(447, 312)
+        Me.Panel2.Size = New System.Drawing.Size(465, 329)
         Me.Panel2.TabIndex = 9
         Me.Panel2.Visible = False
         '
         'Handoff_gnd
         '
-        Me.Handoff_gnd.Location = New System.Drawing.Point(155, 212)
+        Me.Handoff_gnd.Location = New System.Drawing.Point(167, 225)
         Me.Handoff_gnd.Name = "Handoff_gnd"
-        Me.Handoff_gnd.Size = New System.Drawing.Size(129, 45)
+        Me.Handoff_gnd.Size = New System.Drawing.Size(155, 45)
         Me.Handoff_gnd.TabIndex = 5
         Me.Handoff_gnd.Text = "GNDハンドオフ"
         Me.Handoff_gnd.UseVisualStyleBackColor = True
@@ -254,9 +242,9 @@ Partial Class Form1
         '
         'continue_approach
         '
-        Me.continue_approach.Location = New System.Drawing.Point(155, 263)
+        Me.continue_approach.Location = New System.Drawing.Point(167, 276)
         Me.continue_approach.Name = "continue_approach"
-        Me.continue_approach.Size = New System.Drawing.Size(129, 46)
+        Me.continue_approach.Size = New System.Drawing.Size(155, 46)
         Me.continue_approach.TabIndex = 4
         Me.continue_approach.Text = "進入継続"
         Me.continue_approach.UseVisualStyleBackColor = True
@@ -264,9 +252,9 @@ Partial Class Form1
         '
         'go_around
         '
-        Me.go_around.Location = New System.Drawing.Point(155, 212)
+        Me.go_around.Location = New System.Drawing.Point(167, 227)
         Me.go_around.Name = "go_around"
-        Me.go_around.Size = New System.Drawing.Size(129, 46)
+        Me.go_around.Size = New System.Drawing.Size(155, 46)
         Me.go_around.TabIndex = 3
         Me.go_around.Text = "着陸復行"
         Me.go_around.UseVisualStyleBackColor = True
@@ -274,9 +262,9 @@ Partial Class Form1
         '
         'cleared_to_land
         '
-        Me.cleared_to_land.Location = New System.Drawing.Point(155, 158)
+        Me.cleared_to_land.Location = New System.Drawing.Point(167, 171)
         Me.cleared_to_land.Name = "cleared_to_land"
-        Me.cleared_to_land.Size = New System.Drawing.Size(129, 48)
+        Me.cleared_to_land.Size = New System.Drawing.Size(155, 48)
         Me.cleared_to_land.TabIndex = 2
         Me.cleared_to_land.Text = "着陸許可"
         Me.cleared_to_land.UseVisualStyleBackColor = True
@@ -285,10 +273,10 @@ Partial Class Form1
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(26, 35)
+        Me.TextBox2.Location = New System.Drawing.Point(28, 51)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(404, 117)
+        Me.TextBox2.Size = New System.Drawing.Size(404, 114)
         Me.TextBox2.TabIndex = 1
         '
         'Label2
@@ -304,11 +292,21 @@ Partial Class Form1
         'Timer5
         '
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1216, 701)
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(948, 467)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(1216, 701)
         Me.Controls.Add(Me.Start)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.demo)
@@ -318,15 +316,17 @@ Partial Class Form1
         Me.Controls.Add(Me.plane1)
         Me.Controls.Add(Me.plane0)
         Me.Controls.Add(Me.PictureBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds
         Me.Text = "Form1"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
