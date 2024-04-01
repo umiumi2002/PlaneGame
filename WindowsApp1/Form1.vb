@@ -16,6 +16,7 @@ Public Class Form1
     ' 音源リソースを取り込む
     Dim mediaStream As System.IO.Stream = My.Resources.carenginestart1
     Private continue_approach_clicked As Boolean
+    Private flag As Boolean = True
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' フォームのサイズをPictureBoxのサイズに合わせる
@@ -34,7 +35,7 @@ Public Class Form1
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
         ' ボタンが押されたら他の機能を有効にする
         Timer1.Enabled = True
-        Timer4.Interval = 500
+        'Timer4.Interval = 500
         Timer4.Enabled = True
         TextBox2.AppendText(plane4.Name & ">> Tower," & plane4.Name & " , on final RWY 32 " & Environment.NewLine)
         Start.Hide()
@@ -42,8 +43,8 @@ Public Class Form1
         My.Computer.Audio.Play(mediaStream, AudioPlayMode.Background)
     End Sub
 
-    Private Sub MovePlaneUp()
-        plane0.Top -= 1
+    Private Sub MovePlaneUp(lbl As Label)
+        lbl.Top -= 1
     End Sub
     Private Sub MovePlaneRight()
         ' Timer2.Interval = 100
@@ -110,7 +111,7 @@ Public Class Form1
         ' plane0を上に移動する
         If plane0.Top > 400 Then
             ' plane0が190より上にある場合、上に移動
-            MovePlaneUp()
+            MovePlaneUp(plane0)
         End If
 
         ' plane0が252に達した場合、一時停止
@@ -202,7 +203,9 @@ Public Class Form1
             TextBox1.AppendText(plane0.Name & ">>  Line up and wait, runway 32," & plane0.Name & Environment.NewLine)
         ElseIf cleared_to_land_clicked Then
             TextBox2.AppendText(plane4.Name & ">>  Cleared to land, runway 32," & plane4.Name & Environment.NewLine)
-        ElseIf Handoff_gnd_clicked Then
+        End If
+
+        If Handoff_gnd_clicked Then
             TextBox2.AppendText(plane4.Name & "Nice!!!!" & Environment.NewLine)
             plane4.ForeColor = SystemColors.Highlight
         ElseIf continue_approach_clicked Then
@@ -246,20 +249,29 @@ Public Class Form1
         plane4.ForeColor = SystemColors.Highlight
 
 
-        If plane4.Left < 335 And plane4.Top <= 350 Then
-            Timer5.Interval = 500
-        Else timer5.Interval = 100
+        If plane4.Top <= 350 Then
+            ' Timer5.Interval = 500
+        Else Timer5.Interval = 100
         End If
-        If plane4.Left >= 335 And plane4.Top <= 350 Then
-            plane4.Location = New Point(210, 400)
-            go_around.Hide()
-        ElseIf plane4.Left <= 500 And plane4.Top > 350 Then
-            plane4.Left += 7
-        ElseIf plane4.Left <= 700 And plane4.Top > 350 Then
-            plane4.Left += 5
-        ElseIf plane4.Left <= 1080 And plane4.Top > 350 Then
-            plane4.Left += 1
+        If flag = True Then
+            If plane4.Left >= 335 And plane4.Top <= 350 Then
+                plane4.Location = New Point(210, 400)
+                go_around.Hide()
+            ElseIf plane4.Left <= 500 And plane4.Top > 350 Then
+                plane4.Left += 7
+            ElseIf plane4.Left <= 700 And plane4.Top > 350 Then
+                plane4.Left += 5
+            ElseIf plane4.Left <= 1080 And plane4.Top > 350 Then
+                plane4.Left += 1
+            Else plane4.Left += 1
+            End If
         Else plane4.Left += 1
+            plane4.ForeColor = Color.Red
+            If plane4.Left > 400 And plane4.Top <= 300 Then
+                plane4.Location = New Point(150, 175)
+                cleared_to_land.Show()
+                plane4.ForeColor = SystemColors.Highlight
+            End If
         End If
         If plane4.Left >= 1080 Then
             Handoff_gnd.Show()
@@ -279,7 +291,7 @@ Public Class Form1
     End Sub
 
     Private Sub cleared_to_land_Click_1(sender As Object, e As EventArgs) Handles cleared_to_land.Click
-        Dim goaroundClicked As Boolean = False
+        flag = True
         Timer4.Enabled = False
         Timer5.Enabled = True
         TextBox2.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
@@ -289,14 +301,6 @@ Public Class Form1
         cleared_to_land.Hide()
         continue_approach.Hide()
 
-        While Not goaroundClicked
-            ' ➁のクリックをチェック
-            If goaroundClicked = True Then
-            End If
-        End While
-
-        ' ➁の処理を実行
-        goaroundClick()
     End Sub
 
     Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
@@ -319,12 +323,9 @@ Public Class Form1
     End Sub
 
     Private Sub go_around_Click(sender As Object, e As EventArgs) Handles go_around.Click
-        goaroundClick()
+        flag = False
+        TextBox2.AppendText("TWR >>" & plane4.Name & " , go around, execute missed approach." & Environment.NewLine)
     End Sub
 
-    Private Sub goaroundClick()
-        If plane4.Left >= 490 And plane4.Top <= 300 Then
-            plane4.Location = New Point(150, 175)
-        End If
-    End Sub
+
 End Class

@@ -76,9 +76,9 @@ Partial Class Form1
         Me.plane0.Location = New System.Drawing.Point(150, 500)
         Me.plane0.Margin = New System.Windows.Forms.Padding(0)
         Me.plane0.Name = "plane0"
-        Me.plane0.Size = New System.Drawing.Size(98, 22)
+        Me.plane0.Size = New System.Drawing.Size(69, 44)
         Me.plane0.TabIndex = 1
-        Me.plane0.Text = "● plane0"
+        Me.plane0.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane0"
         '
         'Panel1
         '
@@ -166,9 +166,9 @@ Partial Class Form1
         Me.plane4.Location = New System.Drawing.Point(200, 175)
         Me.plane4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.plane4.Name = "plane4"
-        Me.plane4.Size = New System.Drawing.Size(98, 22)
+        Me.plane4.Size = New System.Drawing.Size(69, 44)
         Me.plane4.TabIndex = 4
-        Me.plane4.Text = "● plane4"
+        Me.plane4.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'plane1
         '
@@ -179,9 +179,9 @@ Partial Class Form1
         Me.plane1.Location = New System.Drawing.Point(150, 560)
         Me.plane1.Margin = New System.Windows.Forms.Padding(0)
         Me.plane1.Name = "plane1"
-        Me.plane1.Size = New System.Drawing.Size(98, 22)
+        Me.plane1.Size = New System.Drawing.Size(69, 44)
         Me.plane1.TabIndex = 5
-        Me.plane1.Text = "● plane1"
+        Me.plane1.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane1"
         '
         'Timer2
         '
