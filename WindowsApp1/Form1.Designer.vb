@@ -51,6 +51,7 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer5 = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Timer6 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +76,7 @@ Partial Class Form1
         Me.plane0.Location = New System.Drawing.Point(150, 500)
         Me.plane0.Margin = New System.Windows.Forms.Padding(0)
         Me.plane0.Name = "plane0"
-        Me.plane0.Size = New System.Drawing.Size(68, 15)
+        Me.plane0.Size = New System.Drawing.Size(98, 22)
         Me.plane0.TabIndex = 1
         Me.plane0.Text = "● plane0"
         '
@@ -119,7 +120,7 @@ Partial Class Form1
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label1.Location = New System.Drawing.Point(18, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 15)
+        Me.Label1.Size = New System.Drawing.Size(73, 23)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Label1"
         '
@@ -162,10 +163,10 @@ Partial Class Form1
         Me.plane4.BackColor = System.Drawing.Color.Transparent
         Me.plane4.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.plane4.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.plane4.Location = New System.Drawing.Point(140, 175)
+        Me.plane4.Location = New System.Drawing.Point(200, 175)
         Me.plane4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.plane4.Name = "plane4"
-        Me.plane4.Size = New System.Drawing.Size(68, 15)
+        Me.plane4.Size = New System.Drawing.Size(98, 22)
         Me.plane4.TabIndex = 4
         Me.plane4.Text = "● plane4"
         '
@@ -178,7 +179,7 @@ Partial Class Form1
         Me.plane1.Location = New System.Drawing.Point(150, 560)
         Me.plane1.Margin = New System.Windows.Forms.Padding(0)
         Me.plane1.Name = "plane1"
-        Me.plane1.Size = New System.Drawing.Size(68, 15)
+        Me.plane1.Size = New System.Drawing.Size(98, 22)
         Me.plane1.TabIndex = 5
         Me.plane1.Text = "● plane1"
         '
@@ -196,7 +197,7 @@ Partial Class Form1
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label4.Location = New System.Drawing.Point(849, 158)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(283, 64)
+        Me.Label4.Size = New System.Drawing.Size(420, 96)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "ゲーム説明" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Startボタンを押すとゲーム開始" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "各planeを押すと場合に応じた指示が出せる" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -207,9 +208,9 @@ Partial Class Form1
         '
         Me.demo.AutoSize = True
         Me.demo.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.demo.Location = New System.Drawing.Point(158, 432)
+        Me.demo.Location = New System.Drawing.Point(495, 327)
         Me.demo.Name = "demo"
-        Me.demo.Size = New System.Drawing.Size(22, 15)
+        Me.demo.Size = New System.Drawing.Size(33, 23)
         Me.demo.TabIndex = 8
         Me.demo.Text = "●"
         '
@@ -232,7 +233,7 @@ Partial Class Form1
         '
         'Handoff_gnd
         '
-        Me.Handoff_gnd.Location = New System.Drawing.Point(167, 225)
+        Me.Handoff_gnd.Location = New System.Drawing.Point(167, 228)
         Me.Handoff_gnd.Name = "Handoff_gnd"
         Me.Handoff_gnd.Size = New System.Drawing.Size(155, 45)
         Me.Handoff_gnd.TabIndex = 5
@@ -285,7 +286,7 @@ Partial Class Form1
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label2.Location = New System.Drawing.Point(14, 17)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 15)
+        Me.Label2.Size = New System.Drawing.Size(73, 23)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Label2"
         '
@@ -302,6 +303,9 @@ Partial Class Form1
         Me.PictureBox1.Size = New System.Drawing.Size(1216, 701)
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'Timer6
+        '
         '
         'Form1
         '
@@ -359,4 +363,5 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Timer5 As Timer
     Friend WithEvents Handoff_gnd As Button
+    Friend WithEvents Timer6 As Timer
 End Class

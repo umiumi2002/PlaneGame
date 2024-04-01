@@ -7,14 +7,15 @@ Imports System.Runtime.Versioning
 Public Class Form1
     Dim planes As Label()
     Private Hold_short_of_runway_clicked As Boolean
-    Private takeoff_Clicked As Boolean
+    Private takeoff_clicked As Boolean
     Private Line_up_and_wait_clicked As Boolean
     Private Handoff_dep_clicked As Boolean
     Private cleared_to_land_clicked As Boolean
     Public Property Angle As Integer
-    Public Property Handoff_gnd_clicked As Boolean
+    Private Handoff_gnd_clicked As Boolean
     ' 音源リソースを取り込む
     Dim mediaStream As System.IO.Stream = My.Resources.carenginestart1
+    Private continue_approach_clicked As Boolean
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' フォームのサイズをPictureBoxのサイズに合わせる
@@ -70,21 +71,21 @@ Public Class Form1
 
 
     Private Sub takeoff_Click(sender As Object, e As EventArgs) Handles takeoff.Click
-        takeoff_Clicked = True
-        show_text.Interval = 2000 ' 2秒間隔
-        show_text.Enabled = True
+        takeoff_clicked = True
         Timer2.Enabled = True
-        TextBox1.AppendText("TWR >>" & plane0.Name & "RWY 32, cleared to takeoff " & Environment.NewLine)
+        TextBox1.AppendText("TWR >> " & plane0.Name & " RWY 32, cleared to takeoff " & Environment.NewLine)
         takeoff.Hide()
         Line_up_and_wait.Hide()
         Hold_short_of_runway.Hide()
+        show_text.Interval = 2000 ' 2秒間隔
+        show_text.Enabled = True
     End Sub
 
     Private Sub Hold_short_of_runway_Click(sender As Object, e As EventArgs) Handles Hold_short_of_runway.Click
-        Hold_short_of_runway_clicked = True
         TextBox1.AppendText("TWR >>" & plane0.Name & " , Hold short of runway 32." & Environment.NewLine)
         show_text.Interval = 2000 ' 2秒間隔
         show_text.Enabled = True
+        Hold_short_of_runway_clicked = True
     End Sub
     Private Sub Line_up_and_wait_Click(sender As Object, e As EventArgs) Handles Line_up_and_wait.Click
         Line_up_and_wait_clicked = True
@@ -119,7 +120,7 @@ Public Class Form1
             takeoff.Show()
             Line_up_and_wait.Show()
             Hold_short_of_runway.Show()
-            TextBox1.AppendText(plane0.Name & " >> Tower," & plane0.Name & " ,on your frequency. " & Environment.NewLine)
+            TextBox1.AppendText(plane0.Name & " >> Tower, " & plane0.Name & " ,on your frequency. " & Environment.NewLine)
         End If
 
 
@@ -147,7 +148,7 @@ Public Class Form1
             Line_up_and_wait.Hide()
             Hold_short_of_runway.Hide()
             Handoff_dep.Show()
-            TextBox1.AppendText("TWR >>" & plane0.Name & " ,contact to DEP " & Environment.NewLine)
+            TextBox1.AppendText("TWR >>" & plane0.Name & " ,contact to departure " & Environment.NewLine)
             MovePlaneRight()
         End If
         If plane0.Left >= 800 AndAlso plane0.Top <= 350 Then
@@ -192,7 +193,7 @@ Public Class Form1
         If Handoff_dep_clicked Then
             ChangeToBlue()
             TextBox1.AppendText(plane0.Name & " Nice!!!" & Environment.NewLine)
-        ElseIf takeoff_Clicked Then
+        ElseIf takeoff_clicked Then
             TextBox1.AppendText(plane0.Name & ">> Cleared for take off runway 32, " & plane0.Name & Environment.NewLine)
         ElseIf Hold_short_of_runway_clicked Then
             TextBox1.AppendText(plane0.Name & ">> Hold short of runway 32," & plane0.Name & Environment.NewLine)
@@ -204,6 +205,9 @@ Public Class Form1
         ElseIf Handoff_gnd_clicked Then
             TextBox2.AppendText(plane4.Name & "Nice!!!!" & Environment.NewLine)
             plane4.ForeColor = SystemColors.Highlight
+        ElseIf continue_approach_clicked Then
+            TextBox2.AppendText(plane4.Name & ">>  RWY 32 continue approach " & plane4.Name & Environment.NewLine)
+
         End If
         show_text.Enabled = False
 
@@ -254,19 +258,28 @@ Public Class Form1
         ElseIf plane4.Left <= 700 And plane4.Top > 350 Then
             plane4.Left += 5
         ElseIf plane4.Left <= 1080 And plane4.Top > 350 Then
-            plane4.Left += 3
+            plane4.Left += 1
         Else plane4.Left += 1
         End If
-        If plane4.Left > 1080 Then
-            TextBox2.AppendText("TWR >>" & plane4.Name & " , contact ground  " & Environment.NewLine)
-            plane4.ForeColor = Color.Red
-            plane4.Left -= 1
-            plane4.Top += 1
+        If plane4.Left >= 1080 Then
             Handoff_gnd.Show()
+            TextBox2.AppendText("TWR >>" & plane4.Name & " , contact ground  " & Environment.NewLine)
+            Timer5.Enabled = False
+            Timer6.Enabled = True
         End If
+    End Sub
+    Private Sub Timer6_Tick(sender As Object, e As EventArgs) Handles Timer6.Tick
+        plane4.ForeColor = Color.Red
+        plane4.Top += 1
+        If plane4.Left >= 1080 AndAlso plane0.Top >= 625 Then
+            plane4.Hide()
+            Timer6.Enabled = False
+        End If
+
     End Sub
 
     Private Sub cleared_to_land_Click_1(sender As Object, e As EventArgs) Handles cleared_to_land.Click
+        Dim goaroundClicked As Boolean = False
         Timer4.Enabled = False
         Timer5.Enabled = True
         TextBox2.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
@@ -275,15 +288,43 @@ Public Class Form1
         show_text.Enabled = True
         cleared_to_land.Hide()
         continue_approach.Hide()
+
+        While Not goaroundClicked
+            ' ➁のクリックをチェック
+            If goaroundClicked = True Then
+            End If
+        End While
+
+        ' ➁の処理を実行
+        goaroundClick()
     End Sub
 
     Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
 
-        Handoff_gnd_clicked = True
-        show_text.Interval = 1000
-        show_text.Enabled = True
         TextBox2.AppendText(plane4.Name & " >> Contact ground , " & plane4.Name & ". " & Environment.NewLine)
         Handoff_gnd.Hide()
+        show_text.Interval = 2000
+        show_text.Enabled = True
+        Handoff_gnd_clicked = True
 
+
+    End Sub
+
+    Private Sub continue_approach_Click(sender As Object, e As EventArgs) Handles continue_approach.Click
+        TextBox2.AppendText("TWR >>" & plane4.Name & " , RWY 32 continue approach." & Environment.NewLine)
+        show_text.Interval = 2000 ' 2秒間隔
+        show_text.Enabled = True
+        continue_approach_clicked = True
+
+    End Sub
+
+    Private Sub go_around_Click(sender As Object, e As EventArgs) Handles go_around.Click
+        goaroundClick()
+    End Sub
+
+    Private Sub goaroundClick()
+        If plane4.Left >= 490 And plane4.Top <= 300 Then
+            plane4.Location = New Point(150, 175)
+        End If
     End Sub
 End Class
