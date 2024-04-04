@@ -104,6 +104,7 @@ Partial Class Form1
         Me.LabelElapsedTime = New System.Windows.Forms.Label()
         Me.plane_hide_ = New System.Windows.Forms.Label()
         Me.result = New System.Windows.Forms.TextBox()
+        Me.point_ = New System.Windows.Forms.Label()
         Me.Panel0.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -751,21 +752,23 @@ Partial Class Form1
         Me.LabelElapsedTime.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.LabelElapsedTime.Location = New System.Drawing.Point(31, 21)
         Me.LabelElapsedTime.Name = "LabelElapsedTime"
-        Me.LabelElapsedTime.Size = New System.Drawing.Size(174, 22)
+        Me.LabelElapsedTime.Size = New System.Drawing.Size(98, 22)
         Me.LabelElapsedTime.TabIndex = 16
-        Me.LabelElapsedTime.Text = "LabelElapsedTime"
+        Me.LabelElapsedTime.Text = "経過時間"
         '
         'plane_hide_
         '
         Me.plane_hide_.AutoSize = True
+        Me.plane_hide_.Font = New System.Drawing.Font("MS UI Gothic", 11.0!)
         Me.plane_hide_.Location = New System.Drawing.Point(32, 56)
         Me.plane_hide_.Name = "plane_hide_"
-        Me.plane_hide_.Size = New System.Drawing.Size(58, 18)
+        Me.plane_hide_.Size = New System.Drawing.Size(134, 22)
         Me.plane_hide_.TabIndex = 17
-        Me.plane_hide_.Text = "Label3"
+        Me.plane_hide_.Text = "残り操作機体"
         '
         'result
         '
+        Me.result.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.result.Location = New System.Drawing.Point(494, 334)
         Me.result.Multiline = True
         Me.result.Name = "result"
@@ -773,10 +776,21 @@ Partial Class Form1
         Me.result.TabIndex = 18
         Me.result.Visible = False
         '
+        'point_
+        '
+        Me.point_.AutoSize = True
+        Me.point_.Font = New System.Drawing.Font("MS UI Gothic", 11.0!)
+        Me.point_.Location = New System.Drawing.Point(33, 99)
+        Me.point_.Name = "point_"
+        Me.point_.Size = New System.Drawing.Size(76, 22)
+        Me.point_.TabIndex = 19
+        Me.point_.Text = "ポイント"
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1216, 701)
+        Me.Controls.Add(Me.point_)
         Me.Controls.Add(Me.result)
         Me.Controls.Add(Me.plane_hide_)
         Me.Controls.Add(Me.LabelElapsedTime)
@@ -900,4 +914,5 @@ Partial Class Form1
     Friend WithEvents LabelElapsedTime As Label
     Friend WithEvents plane_hide_ As Label
     Friend WithEvents result As TextBox
+    Friend WithEvents point_ As Label
 End Class

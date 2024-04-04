@@ -13,7 +13,9 @@ Public Class Form1
     Public Property Angle As Integer
     Private Handoff_gnd_clicked As Boolean
     ' 音源リソースを取り込む
-    Dim mediaStream As System.IO.Stream = My.Resources.carenginestart1
+    Dim mediaStream As System.IO.Stream = My.Resources.background_voice
+    Dim takeoff_voice As System.IO.Stream = My.Resources.takeoff
+    Private gameSoundPlaying As Boolean = False
     Private flag As Boolean = True
     Private flag5 As Boolean = True
     Private flag6 As Boolean = True
@@ -28,6 +30,7 @@ Public Class Form1
     Private continue_approach_clicked_6 As Boolean
     Private go_around_clicked_6 As Boolean
     Private plane_hide As Integer
+    Private point As Integer
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' フォームのサイズをPictureBoxのサイズに合わせる
@@ -44,7 +47,12 @@ Public Class Form1
         PictureBox1.Controls.Add(plane4)
         PictureBox1.Controls.Add(plane5)
         PictureBox1.Controls.Add(plane6)
-        plane_hide = 0
+
+    End Sub
+    Private Sub PlayGameSound()
+        ' 音源を再生する
+        My.Computer.Audio.Play(mediaStream, AudioPlayMode.BackgroundLoop)
+
     End Sub
 
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
@@ -64,13 +72,20 @@ Public Class Form1
         TextBox5.AppendText(plane5.Name & ">> Tower," & plane5.Name & " , on final RWY 32 " & Environment.NewLine)
 
         Start.Hide()
-        ' 音源を再生する
-        'My.Computer.Audio.Play(mediaStream, AudioPlayMode.Background)
 
+
+        plane_hide = 0
+        point = 0
         ' ゲーム開始時刻を現在時刻で初期化
         gameStartTime = DateTime.Now
         ' タイマーを開始
-        gameStart.Start()
+        gameStart.Enabled = True
+
+        If Not gameSoundPlaying Then
+            PlayGameSound()
+            gameSoundPlaying = True
+        End If
+
 
     End Sub
 
@@ -111,6 +126,9 @@ Public Class Form1
         ChangeToBlue()
         planeMoving = True
         Timer7.Enabled = True
+        point += 500
+        My.Computer.Audio.Play(takeoff_voice, AudioPlayMode.Background)
+        gameSoundPlaying = False
     End Sub
 
 
@@ -138,6 +156,7 @@ Public Class Form1
         show_text.Enabled = True
         TextBox0.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
         Handoff_dep.Hide()
+        point += 50
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -196,7 +215,6 @@ Public Class Form1
         End If
         If plane0.Left >= 680 AndAlso plane0.Top <= 350 Then
             plane0.Hide()
-            plane_hide += 1
             Timer2.Enabled = False
         End If
         'End If
@@ -248,6 +266,7 @@ Public Class Form1
         If Handoff_dep_clicked Then
             ChangeToBlue()
             TextBox0.AppendText(plane0.Name & " Nice!!!" & Environment.NewLine)
+            plane_hide += 1
         ElseIf takeoff_clicked Then
             TextBox0.AppendText(plane0.Name & ">> Cleared for take off runway 32, " & plane0.Name & Environment.NewLine)
         ElseIf Hold_short_of_runway_clicked Then
@@ -321,6 +340,7 @@ Public Class Form1
         plane1.ForeColor = SystemColors.Highlight
         planeMoving = True
         Timer16.Enabled = True
+        point += 500
     End Sub
 
     Private Sub Line_up_and_wait_1_Click_1(sender As Object, e As EventArgs) Handles Line_up_and_wait_1.Click
@@ -348,7 +368,7 @@ Public Class Form1
         show_text_1.Enabled = True
         TextBox1.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
         Handoff_dep_1.Hide()
-
+        point += 50
     End Sub
 
 
@@ -380,7 +400,6 @@ Public Class Form1
         End If
         If plane1.Left >= 680 AndAlso plane1.Top <= 350 Then
             plane1.Hide()
-            plane_hide += 1
             Timer8.Enabled = False
         End If
 
@@ -413,6 +432,7 @@ Public Class Form1
         ElseIf Handoff_dep_clicked Then
             plane1.ForeColor = SystemColors.Highlight
             TextBox1.AppendText(plane1.Name & " Nice!!!" & Environment.NewLine)
+            plane_hide += 1
         End If
 
         show_text_1.Enabled = False
@@ -474,6 +494,7 @@ Public Class Form1
         show_text_2.Interval = 2000 ' 2秒間隔
         show_text_2.Enabled = True
         plane2.ForeColor = SystemColors.Highlight
+        point += 500
     End Sub
 
     Private Sub Line_up_and_wait_2_Click(sender As Object, e As EventArgs) Handles Line_up_and_wait_2.Click
@@ -501,7 +522,7 @@ Public Class Form1
         show_text_2.Enabled = True
         TextBox2.AppendText(plane0.Name & ">>  Contact departure ," & plane0.Name & Environment.NewLine)
         Handoff_dep_2.Hide()
-
+        point += 50
     End Sub
 
 
@@ -533,7 +554,6 @@ Public Class Form1
         End If
         If plane2.Left >= 680 AndAlso plane2.Top <= 350 Then
             plane2.Hide()
-            plane_hide += 1
             Timer17.Enabled = False
         End If
 
@@ -563,6 +583,7 @@ Public Class Form1
         ElseIf Handoff_dep_clicked Then
             plane2.ForeColor = SystemColors.Highlight
             TextBox2.AppendText(plane2.Name & " Nice!!!" & Environment.NewLine)
+            plane_hide += 1
         End If
 
         show_text_2.Enabled = False
@@ -610,7 +631,7 @@ Public Class Form1
         show_text_4.Enabled = True
         cleared_to_land.Hide()
         continue_approach.Hide()
-
+        point += 500
     End Sub
 
     Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
@@ -620,8 +641,7 @@ Public Class Form1
         show_text_4.Interval = 2000
         show_text_4.Enabled = True
         Handoff_gnd_clicked = True
-
-
+        point += 50
     End Sub
 
     Private Sub continue_approach_Click(sender As Object, e As EventArgs) Handles continue_approach.Click
@@ -681,7 +701,6 @@ Public Class Form1
         plane4.Top += 1
         If plane4.Left >= 1080 AndAlso plane4.Top >= 625 Then
             plane4.Hide()
-            plane_hide += 1
             Timer6.Enabled = False
         End If
 
@@ -694,6 +713,7 @@ Public Class Form1
         If Handoff_gnd_clicked Then
             plane4.ForeColor = SystemColors.Highlight
             TextBox4.AppendText(plane4.Name & "Nice!!!!" & Environment.NewLine)
+            plane_hide += 1
 
         ElseIf cleared_to_land_clicked_4 Then
             TextBox4.AppendText(plane4.Name & ">>  Cleared to land, runway 32," & plane4.Name & Environment.NewLine)
@@ -757,6 +777,7 @@ Public Class Form1
         show_text_5.Interval = 2000
         show_text_5.Enabled = True
         Handoff_gnd_clicked = True
+        point += 50
     End Sub
 
     Private Sub go_around_5_Click_1(sender As Object, e As EventArgs) Handles go_around_5.Click
@@ -777,7 +798,7 @@ Public Class Form1
         show_text_5.Enabled = True
         cleared_to_land_5.Hide()
         continue_approach_5.Hide()
-
+        point += 500
     End Sub
 
 
@@ -786,6 +807,7 @@ Public Class Form1
         If Handoff_gnd_clicked Then
             plane5.ForeColor = SystemColors.Highlight
             TextBox5.AppendText(plane5.Name & "Nice!!!!" & Environment.NewLine)
+            plane_hide += 1
         ElseIf cleared_to_land_clicked_5 Then
             TextBox5.AppendText(plane5.Name & ">>  Cleared to land, runway 32," & plane5.Name & Environment.NewLine)
         ElseIf continue_approach_clicked_5 Then
@@ -844,7 +866,6 @@ Public Class Form1
         plane5.Top += 1
         If plane5.Left >= 890 AndAlso plane5.Top >= 625 Then
             plane5.Hide()
-            plane_hide += 1
             Timer12.Enabled = False
         End If
 
@@ -896,6 +917,7 @@ Public Class Form1
         show_text_6.Interval = 2000
         show_text_6.Enabled = True
         Handoff_gnd_clicked = True
+        point += 50
     End Sub
 
     Private Sub go_around_6_Click_1(sender As Object, e As EventArgs) Handles go_around_6.Click
@@ -916,7 +938,7 @@ Public Class Form1
         show_text_6.Enabled = True
         cleared_to_land_6.Hide()
         continue_approach_6.Hide()
-
+        point += 500
     End Sub
 
 
@@ -925,6 +947,7 @@ Public Class Form1
         If Handoff_gnd_clicked Then
             plane6.ForeColor = SystemColors.Highlight
             TextBox6.AppendText(plane6.Name & "Nice!!!!" & Environment.NewLine)
+            plane_hide += 1
         ElseIf cleared_to_land_clicked_6 Then
             TextBox6.AppendText(plane6.Name & ">>  Cleared to land, runway 32," & plane6.Name & Environment.NewLine)
         ElseIf continue_approach_clicked_6 Then
@@ -982,7 +1005,6 @@ Public Class Form1
         plane6.Top += 1
         If plane6.Left >= 890 AndAlso plane6.Top >= 625 Then
             plane6.Hide()
-            plane_hide += 1
             Timer15.Enabled = False
         End If
 
@@ -994,18 +1016,20 @@ Public Class Form1
         ' ラベルに経過時間を表示（例: "経過時間: 00:01:23"）
         LabelElapsedTime.Text = "経過時間: " & elapsedTime.ToString("hh\:mm\:ss")
         plane_hide_.Text = "残り操作機体: " & 6 - plane_hide
+        point_.Text = "得点: " & point
+        If plane_hide >= 6 Then
+            StopGame()
+        End If
     End Sub
 
     ' ゲームを停止し、結果を表示するメソッド
     Private Sub StopGame()
 
-        If plane_hide = 6 Then
-            ' ゲームを停止するためにタイマーを無効にする
-            gameStart.Enabled = False
+        ' ゲームを停止するためにタイマーを無効にする
+        gameStart.Enabled = False
 
-            ' ゲーム結果を表示
-            ShowGameResults()
-        End If
+        ' ゲーム結果を表示
+        ShowGameResults()
     End Sub
 
     Private Sub ShowGameResults()
@@ -1013,7 +1037,9 @@ Public Class Form1
         Dim gameTime As TimeSpan = DateTime.Now - gameStartTime
 
         ' ゲーム時間を表示
-        result.Text = "ゲーム時間: " & gameTime.ToString("hh\:mm\:ss")
+        result.AppendText(" ゲーム成功！！ " & Environment.NewLine)
+        result.AppendText("ゲーム時間: " & gameTime.ToString("hh\:mm\:ss"))
+        result.AppendText("得点: " & point)
         result.Show()
 
         ' ここで記録などの処理を行う

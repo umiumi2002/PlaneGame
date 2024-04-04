@@ -138,5 +138,11 @@
   <ItemGroup>
     <None Include="Resources\background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\北沢2丁目16-1.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\takeoff.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
