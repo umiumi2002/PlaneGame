@@ -1,8 +1,7 @@
 ﻿Imports System.Reflection.Emit
 Imports System.Runtime.Versioning
 
-
-
+Imports System.Runtime.InteropServices
 
 Public Class Form1
     Private gameStartTime As DateTime
@@ -13,8 +12,8 @@ Public Class Form1
     Public Property Angle As Integer
     Private Handoff_gnd_clicked As Boolean
     ' 音源リソースを取り込む
-    Dim mediaStream As System.IO.Stream = My.Resources.background_voice
-    Dim takeoff_voice As System.IO.Stream = My.Resources.takeoff
+    'Dim mediaStream As System.IO.Stream = My.Resources.background_voice
+    'Dim takeoff_voice As System.IO.Stream = My.Resources.takeoff
     Private gameSoundPlaying As Boolean = False
     Private flag As Boolean = True
     Private flag5 As Boolean = True
@@ -39,6 +38,71 @@ Public Class Form1
     End Sub
 
 
+
+
+
+    Private Declare Function mciSendString Lib "winmm.dll" Alias "mciSendStringA" _
+        (ByVal LpstrCommand As String, ByVal LpstrReturnString As String,
+         ByVal uReturnLength As Integer, ByVal HWndCallback As Integer) As Integer
+
+    Public Sub Play_main()
+
+        ' 再生するファイルを「sound1」「sound2」というエイリアス（別名）で開く。 
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\airport_voice.wav" & " alias sound1", Nothing, 0, 0)
+        mciSendString("set sound1 repeat", Nothing, 0, 0)
+        mciSendString("play sound1", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_takeoff()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\takeoff.wav" & " alias sound2", Nothing, 0, 0)
+        mciSendString("play sound2", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_takeoff_1()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\takeoff.wav" & " alias sound3", Nothing, 0, 0)
+        mciSendString("play sound3", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_takeoff_2()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\takeoff.wav" & " alias sound4", Nothing, 0, 0)
+        mciSendString("play sound4", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_LineUpAndWait()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\lineupandwait.wav" & " alias sound5", Nothing, 0, 0)
+        mciSendString("play sound5", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_LineUpAndWait_1()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\lineupandwait.wav" & " alias sound6", Nothing, 0, 0)
+        mciSendString("play sound6", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_LineUpAndWait_2()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\lineupandwait.wav" & " alias sound7", Nothing, 0, 0)
+        mciSendString("play sound7", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_continueApproach_4()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\continueapproach.wav" & " alias sound8", Nothing, 0, 0)
+        mciSendString("play sound8", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_continueApproach_5()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\continueapproach.wav" & " alias sound9", Nothing, 0, 0)
+        mciSendString("play sound9", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_continueApproach_6()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\continueapproach.wav" & " alias sound10", Nothing, 0, 0)
+        mciSendString("play sound10", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_clearedtoland_4()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\clearedtoland.wav" & " alias sound11", Nothing, 0, 0)
+        mciSendString("play sound11", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_clearedtoland_5()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\clearedtoland.wav" & " alias sound12", Nothing, 0, 0)
+        mciSendString("play sound12", Nothing, 0, 0)
+    End Sub
+    Public Sub Play_clearedtoland_6()
+        mciSendString("open " & "C:\Users\miyam\source\repos\umiumi2002\PlaneGame\WindowsApp1\Resources\clearedtoland.wav" & " alias sound13", Nothing, 0, 0)
+        mciSendString("play sound13", Nothing, 0, 0)
+    End Sub
+
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Label1の親コントロールをPictureBox1とする
         PictureBox1.Controls.Add(plane0)
@@ -49,11 +113,7 @@ Public Class Form1
         PictureBox1.Controls.Add(plane6)
 
     End Sub
-    Private Sub PlayGameSound()
-        ' 音源を再生する
-        My.Computer.Audio.Play(mediaStream, AudioPlayMode.BackgroundLoop)
 
-    End Sub
 
     Private Sub Start_Click(sender As Object, e As EventArgs) Handles Start.Click
         ' 離陸
@@ -81,11 +141,9 @@ Public Class Form1
         ' タイマーを開始
         gameStart.Enabled = True
 
-        If Not gameSoundPlaying Then
-            PlayGameSound()
-            gameSoundPlaying = True
-        End If
+        ' PlayMusic(ContinuousMusicFileName, ContinuousMusicAlias, True)
 
+        Play_main()
 
     End Sub
 
@@ -127,8 +185,9 @@ Public Class Form1
         planeMoving = True
         Timer7.Enabled = True
         point += 500
-        My.Computer.Audio.Play(takeoff_voice, AudioPlayMode.Background)
-        gameSoundPlaying = False
+        'My.Computer.Audio.Play(takeoff_voice, AudioPlayMode.Background)
+        gameStart.Enabled = False
+        Play_takeoff()
     End Sub
 
 
@@ -144,10 +203,11 @@ Public Class Form1
         show_text.Enabled = True
         Timer3.Enabled = True
         ChangeToBlue()
-        TextBox0.AppendText("TWR >>" & plane0.Name & " Line up and wait, Runway 32." & Environment.NewLine)
+        TextBox0.AppendText("TWR >>" & plane0.Name & "Runway 32 ,Line up and wait." & Environment.NewLine)
         planeMoving = True
         Hold_short_of_runway.Hide()
         takeoff.Hide()
+        Play_LineUpAndWait()
     End Sub
 
     Private Sub Handoff_dep_Click(sender As Object, e As EventArgs) Handles Handoff_dep.Click
@@ -341,6 +401,7 @@ Public Class Form1
         planeMoving = True
         Timer16.Enabled = True
         point += 500
+        Play_takeoff_1()
     End Sub
 
     Private Sub Line_up_and_wait_1_Click_1(sender As Object, e As EventArgs) Handles Line_up_and_wait_1.Click
@@ -349,10 +410,11 @@ Public Class Form1
         show_text_1.Enabled = True
         Timer9.Enabled = True
         plane1.ForeColor = SystemColors.Highlight
-        TextBox1.AppendText("TWR >>" & plane1.Name & " Line up and wait, Runway 32." & Environment.NewLine)
+        TextBox1.AppendText("TWR >>" & plane1.Name & " , Runway 32, Line up and wait." & Environment.NewLine)
         planeMoving = True
         Hold_short_of_runway_1.Hide()
         takeoff_1.Hide()
+        Play_LineUpAndWait_1()
     End Sub
 
     Private Sub Hold_short_of_runway_1_Click_1(sender As Object, e As EventArgs) Handles Hold_short_of_runway_1.Click
@@ -495,6 +557,7 @@ Public Class Form1
         show_text_2.Enabled = True
         plane2.ForeColor = SystemColors.Highlight
         point += 500
+        Play_takeoff_2()
     End Sub
 
     Private Sub Line_up_and_wait_2_Click(sender As Object, e As EventArgs) Handles Line_up_and_wait_2.Click
@@ -503,10 +566,11 @@ Public Class Form1
         show_text_2.Enabled = True
         Timer18.Enabled = True
         plane2.ForeColor = SystemColors.Highlight
-        TextBox2.AppendText("TWR >>" & plane2.Name & " Line up and wait, Runway 32." & Environment.NewLine)
+        TextBox2.AppendText("TWR >>" & plane2.Name & ", Runway 32  Line up and wait." & Environment.NewLine)
         planeMoving = True
         Hold_short_of_runway_2.Hide()
         takeoff_2.Hide()
+        Play_LineUpAndWait_2()
     End Sub
 
     Private Sub Hold_short_of_runway_2_Click(sender As Object, e As EventArgs) Handles Hold_short_of_runway_2.Click
@@ -625,13 +689,14 @@ Public Class Form1
         flag = True
         Timer4.Enabled = False
         Timer5.Enabled = True
-        TextBox4.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
+        TextBox4.AppendText("TWR >>" & plane4.Name & " RWY 32, cleared to land, wind 200 at 6 " & Environment.NewLine)
         cleared_to_land_clicked_4 = True
         show_text_4.Interval = 2000 ' 2秒間隔
         show_text_4.Enabled = True
         cleared_to_land.Hide()
         continue_approach.Hide()
         point += 500
+        Play_clearedtoland_4()
     End Sub
 
     Private Sub Handoff_gnd_Click(sender As Object, e As EventArgs) Handles Handoff_gnd.Click
@@ -649,7 +714,7 @@ Public Class Form1
         show_text_4.Interval = 2000 ' 2秒間隔
         show_text_4.Enabled = True
         continue_approach_clicked_4 = True
-
+        Play_continueApproach_4()
     End Sub
 
     Private Sub go_around_Click(sender As Object, e As EventArgs) Handles go_around.Click
@@ -768,7 +833,7 @@ Public Class Form1
         show_text_5.Interval = 2000 ' 2秒間隔
         show_text_5.Enabled = True
         continue_approach_clicked_5 = True
-
+        Play_continueApproach_5()
     End Sub
 
     Private Sub Handoff_gnd_5_Click_1(sender As Object, e As EventArgs) Handles Handoff_gnd_5.Click
@@ -792,13 +857,14 @@ Public Class Form1
         flag5 = True
         Timer10.Enabled = False
         Timer11.Enabled = True
-        TextBox5.AppendText("TWR >>" & plane5.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
+        TextBox5.AppendText("TWR >>" & plane5.Name & " RWY 32, cleared to land, wind 200 at 6 " & Environment.NewLine)
         cleared_to_land_clicked_5 = True
         show_text_5.Interval = 2000 ' 2秒間隔
         show_text_5.Enabled = True
         cleared_to_land_5.Hide()
         continue_approach_5.Hide()
         point += 500
+        Play_clearedtoland_5()
     End Sub
 
 
@@ -908,7 +974,7 @@ Public Class Form1
         show_text_6.Interval = 2000 ' 2秒間隔
         show_text_6.Enabled = True
         continue_approach_clicked_6 = True
-
+        Play_continueApproach_6()
     End Sub
 
     Private Sub Handoff_gnd_6_Click_1(sender As Object, e As EventArgs) Handles Handoff_gnd_6.Click
@@ -932,13 +998,14 @@ Public Class Form1
         flag6 = True
         Timer13.Enabled = False
         Timer14.Enabled = True
-        TextBox6.AppendText("TWR >>" & plane6.Name & " RWY 32, cleared to land, wind -- at -- " & Environment.NewLine)
+        TextBox6.AppendText("TWR >>" & plane6.Name & " RWY 32, cleared to land, wind 200 at 6 " & Environment.NewLine)
         cleared_to_land_clicked_6 = True
         show_text_6.Interval = 2000 ' 2秒間隔
         show_text_6.Enabled = True
         cleared_to_land_6.Hide()
         continue_approach_6.Hide()
         point += 500
+        Play_clearedtoland_6()
     End Sub
 
 
@@ -1020,6 +1087,50 @@ Public Class Form1
         If plane_hide >= 6 Then
             StopGame()
         End If
+
+
+
+        CheckGameOver()
+    End Sub
+
+    Private Sub CheckGameOver()
+        Dim buttonClicked As Boolean = CheckButtonsClicked()
+        If Not buttonClicked Then
+            Gameover()
+        End If
+    End Sub
+
+    Private Function CheckButtonsClicked() As Boolean
+        ' 各ボタンの状態を確認し、すべてのボタンがクリックされているかどうかを判定するコードをここに記述
+        ' ボタンがクリックされている場合はTrueを返し、それ以外の場合はFalseを返します
+        If plane4.Left > 335 AndAlso plane4.Top <= 350 Then
+            ' どれかひとつでもクリックされていない場合はFalseを返す
+            If Not go_around_clicked_4 AndAlso Not continue_approach_clicked_4 AndAlso Not cleared_to_land_clicked_4 Then
+                Return False
+            End If
+        End If
+        If plane5.Left > 335 AndAlso plane5.Top <= 350 Then
+            ' どれかひとつでもクリックされていない場合はFalseを返す
+            If Not go_around_clicked_5 AndAlso Not continue_approach_clicked_5 AndAlso Not cleared_to_land_clicked_5 Then
+                Return False
+            End If
+        End If
+        If plane6.Left > 335 AndAlso plane6.Top <= 350 Then
+            ' どれかひとつでもクリックされていない場合はFalseを返す
+            If Not go_around_clicked_6 AndAlso Not continue_approach_clicked_6 AndAlso Not cleared_to_land_clicked_6 Then
+                Return False
+            End If
+        End If
+
+        ' 上記の条件に該当しない場合はTrueを返す
+        Return True
+    End Function
+
+    Private Sub Gameover()
+        gameStart.Enabled = False
+        result.AppendText("ゲームオーバー" & Environment.NewLine)
+        result.AppendText("着陸機に指示を出さぬまま滑走路を通過しました" & Environment.NewLine)
+        result.Show()
     End Sub
 
     ' ゲームを停止し、結果を表示するメソッド

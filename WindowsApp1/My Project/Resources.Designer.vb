@@ -72,6 +72,15 @@ Namespace My.Resources
         '''<summary>
         '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         '''</summary>
+        Friend ReadOnly Property airport_voice() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("airport_voice", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        '''</summary>
         Friend ReadOnly Property airport1() As System.IO.UnmanagedMemoryStream
             Get
                 Return ResourceManager.GetStream("airport1", resourceCulture)
@@ -91,18 +100,27 @@ Namespace My.Resources
         '''<summary>
         '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         '''</summary>
-        Friend ReadOnly Property background_voice() As System.IO.UnmanagedMemoryStream
+        Friend ReadOnly Property carenginestart1() As System.IO.UnmanagedMemoryStream
             Get
-                Return ResourceManager.GetStream("background_voice", resourceCulture)
+                Return ResourceManager.GetStream("carenginestart1", resourceCulture)
             End Get
         End Property
         
         '''<summary>
         '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         '''</summary>
-        Friend ReadOnly Property carenginestart1() As System.IO.UnmanagedMemoryStream
+        Friend ReadOnly Property clearedtoland() As System.IO.UnmanagedMemoryStream
             Get
-                Return ResourceManager.GetStream("carenginestart1", resourceCulture)
+                Return ResourceManager.GetStream("clearedtoland", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property continueapproach() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("continueapproach", resourceCulture)
             End Get
         End Property
         
@@ -123,6 +141,15 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("Image2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        '''</summary>
+        Friend ReadOnly Property lineupandwait() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("lineupandwait", resourceCulture)
             End Get
         End Property
         

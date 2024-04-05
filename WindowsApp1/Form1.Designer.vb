@@ -265,7 +265,7 @@ Partial Class Form1
         '
         Me.demo.AutoSize = True
         Me.demo.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.demo.Location = New System.Drawing.Point(680, 175)
+        Me.demo.Location = New System.Drawing.Point(335, 175)
         Me.demo.Name = "demo"
         Me.demo.Size = New System.Drawing.Size(33, 23)
         Me.demo.TabIndex = 8
@@ -769,10 +769,10 @@ Partial Class Form1
         'result
         '
         Me.result.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.result.Location = New System.Drawing.Point(494, 334)
+        Me.result.Location = New System.Drawing.Point(425, 278)
         Me.result.Multiline = True
         Me.result.Name = "result"
-        Me.result.Size = New System.Drawing.Size(279, 160)
+        Me.result.Size = New System.Drawing.Size(400, 216)
         Me.result.TabIndex = 18
         Me.result.Visible = False
         '

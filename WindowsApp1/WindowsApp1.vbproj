@@ -103,9 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -139,10 +139,22 @@
     <None Include="Resources\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\北沢2丁目16-1.wav" />
+    <None Include="Resources\background_voice.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\takeoff.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\airport_voice.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clearedtoland.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\continueapproach.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lineupandwait.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
