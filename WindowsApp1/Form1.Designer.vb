@@ -133,7 +133,7 @@ Partial Class Form1
         Me.plane0.Location = New System.Drawing.Point(150, 500)
         Me.plane0.Margin = New System.Windows.Forms.Padding(0)
         Me.plane0.Name = "plane0"
-        Me.plane0.Size = New System.Drawing.Size(69, 44)
+        Me.plane0.Size = New System.Drawing.Size(48, 30)
         Me.plane0.TabIndex = 1
         Me.plane0.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane0"
         '
@@ -177,7 +177,7 @@ Partial Class Form1
         Me.Label0.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label0.Location = New System.Drawing.Point(18, 17)
         Me.Label0.Name = "Label0"
-        Me.Label0.Size = New System.Drawing.Size(73, 23)
+        Me.Label0.Size = New System.Drawing.Size(48, 15)
         Me.Label0.TabIndex = 4
         Me.Label0.Text = "Label0"
         '
@@ -223,7 +223,7 @@ Partial Class Form1
         Me.plane4.Location = New System.Drawing.Point(230, 175)
         Me.plane4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.plane4.Name = "plane4"
-        Me.plane4.Size = New System.Drawing.Size(69, 44)
+        Me.plane4.Size = New System.Drawing.Size(48, 30)
         Me.plane4.TabIndex = 4
         Me.plane4.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane4" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -236,7 +236,7 @@ Partial Class Form1
         Me.plane1.Location = New System.Drawing.Point(150, 560)
         Me.plane1.Margin = New System.Windows.Forms.Padding(0)
         Me.plane1.Name = "plane1"
-        Me.plane1.Size = New System.Drawing.Size(69, 44)
+        Me.plane1.Size = New System.Drawing.Size(48, 30)
         Me.plane1.TabIndex = 5
         Me.plane1.Text = "● " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane1"
         '
@@ -254,7 +254,7 @@ Partial Class Form1
         Me.explain.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.explain.Location = New System.Drawing.Point(849, 158)
         Me.explain.Name = "explain"
-        Me.explain.Size = New System.Drawing.Size(420, 96)
+        Me.explain.Size = New System.Drawing.Size(283, 64)
         Me.explain.TabIndex = 7
         Me.explain.Text = "ゲーム説明" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Startボタンを押すとゲーム開始" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "各planeを押すと場合に応じた指示が出せる" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -265,11 +265,12 @@ Partial Class Form1
         '
         Me.demo.AutoSize = True
         Me.demo.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.demo.Location = New System.Drawing.Point(335, 175)
+        Me.demo.Location = New System.Drawing.Point(194, 404)
         Me.demo.Name = "demo"
-        Me.demo.Size = New System.Drawing.Size(33, 23)
+        Me.demo.Size = New System.Drawing.Size(22, 15)
         Me.demo.TabIndex = 8
         Me.demo.Text = "●"
+        Me.demo.Visible = False
         '
         'Timer4
         '
@@ -343,7 +344,7 @@ Partial Class Form1
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label4.Location = New System.Drawing.Point(14, 17)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(73, 23)
+        Me.Label4.Size = New System.Drawing.Size(48, 15)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Label4"
         '
@@ -416,7 +417,7 @@ Partial Class Form1
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label5.Location = New System.Drawing.Point(24, 20)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(75, 24)
+        Me.Label5.Size = New System.Drawing.Size(51, 16)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Label5"
         '
@@ -459,7 +460,7 @@ Partial Class Form1
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
         Me.Label6.Location = New System.Drawing.Point(20, 22)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(75, 24)
+        Me.Label6.Size = New System.Drawing.Size(51, 16)
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "Label6"
         '
@@ -532,7 +533,7 @@ Partial Class Form1
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label1.Location = New System.Drawing.Point(16, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(75, 24)
+        Me.Label1.Size = New System.Drawing.Size(51, 16)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Label1"
         '
@@ -606,7 +607,7 @@ Partial Class Form1
         Me.plane5.ForeColor = System.Drawing.SystemColors.Highlight
         Me.plane5.Location = New System.Drawing.Point(125, 175)
         Me.plane5.Name = "plane5"
-        Me.plane5.Size = New System.Drawing.Size(69, 44)
+        Me.plane5.Size = New System.Drawing.Size(48, 30)
         Me.plane5.TabIndex = 11
         Me.plane5.Text = "●" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -630,7 +631,7 @@ Partial Class Form1
         Me.plane6.ForeColor = System.Drawing.SystemColors.Highlight
         Me.plane6.Location = New System.Drawing.Point(20, 175)
         Me.plane6.Name = "plane6"
-        Me.plane6.Size = New System.Drawing.Size(69, 44)
+        Me.plane6.Size = New System.Drawing.Size(48, 30)
         Me.plane6.TabIndex = 12
         Me.plane6.Text = "●" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -654,7 +655,7 @@ Partial Class Form1
         Me.plane2.ForeColor = System.Drawing.SystemColors.Highlight
         Me.plane2.Location = New System.Drawing.Point(150, 620)
         Me.plane2.Name = "plane2"
-        Me.plane2.Size = New System.Drawing.Size(69, 44)
+        Me.plane2.Size = New System.Drawing.Size(48, 30)
         Me.plane2.TabIndex = 14
         Me.plane2.Text = "●" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "plane2"
         '
@@ -687,7 +688,7 @@ Partial Class Form1
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 12.0!)
         Me.Label2.Location = New System.Drawing.Point(24, 19)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 24)
+        Me.Label2.Size = New System.Drawing.Size(51, 16)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Label2"
         '
@@ -752,7 +753,7 @@ Partial Class Form1
         Me.LabelElapsedTime.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.LabelElapsedTime.Location = New System.Drawing.Point(31, 21)
         Me.LabelElapsedTime.Name = "LabelElapsedTime"
-        Me.LabelElapsedTime.Size = New System.Drawing.Size(98, 22)
+        Me.LabelElapsedTime.Size = New System.Drawing.Size(67, 15)
         Me.LabelElapsedTime.TabIndex = 16
         Me.LabelElapsedTime.Text = "経過時間"
         '
@@ -762,7 +763,7 @@ Partial Class Form1
         Me.plane_hide_.Font = New System.Drawing.Font("MS UI Gothic", 11.0!)
         Me.plane_hide_.Location = New System.Drawing.Point(32, 56)
         Me.plane_hide_.Name = "plane_hide_"
-        Me.plane_hide_.Size = New System.Drawing.Size(134, 22)
+        Me.plane_hide_.Size = New System.Drawing.Size(91, 15)
         Me.plane_hide_.TabIndex = 17
         Me.plane_hide_.Text = "残り操作機体"
         '
@@ -774,6 +775,8 @@ Partial Class Form1
         Me.result.Name = "result"
         Me.result.Size = New System.Drawing.Size(400, 216)
         Me.result.TabIndex = 18
+        Me.result.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.result.Visible = False
         '
         'point_
@@ -782,7 +785,7 @@ Partial Class Form1
         Me.point_.Font = New System.Drawing.Font("MS UI Gothic", 11.0!)
         Me.point_.Location = New System.Drawing.Point(33, 99)
         Me.point_.Name = "point_"
-        Me.point_.Size = New System.Drawing.Size(76, 22)
+        Me.point_.Size = New System.Drawing.Size(52, 15)
         Me.point_.TabIndex = 19
         Me.point_.Text = "ポイント"
         '

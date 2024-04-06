@@ -185,8 +185,6 @@ Public Class Form1
         planeMoving = True
         Timer7.Enabled = True
         point += 500
-        'My.Computer.Audio.Play(takeoff_voice, AudioPlayMode.Background)
-        gameStart.Enabled = False
         Play_takeoff()
     End Sub
 
@@ -629,7 +627,7 @@ Public Class Form1
                 plane2.Top -= 1
             Else
                 plane2.ForeColor = Color.Red
-                takeoff_2.Hide()
+                takeoff_2.Show()
                 Timer9.Enabled = False
                 planeMoving = False
             End If
@@ -734,7 +732,7 @@ Public Class Form1
         End If
         If flag = True Then
             If plane4.Left >= 335 And plane4.Top <= 350 Then
-                plane4.Location = New Point(210, 400)
+                plane4.Location = New Point(190, 400)
                 'TextBox4.AppendText("TWR >>" & plane4.Name & " , turn right available taxiway.  " & Environment.NewLine)
                 go_around.Hide()
             ElseIf plane4.Left <= 500 And plane4.Top > 350 Then
@@ -899,7 +897,7 @@ Public Class Form1
         End If
         If flag5 = True Then
             If plane5.Left >= 335 And plane5.Top <= 350 Then
-                plane5.Location = New Point(210, 400)
+                plane5.Location = New Point(190, 400)
                 TextBox5.AppendText("TWR >>" & plane5.Name & " , turn right available taxiway.  " & Environment.NewLine)
                 go_around_5.Hide()
             ElseIf plane5.Left <= 500 And plane5.Top > 350 Then
@@ -1040,7 +1038,7 @@ Public Class Form1
         End If
         If flag6 = True Then
             If plane6.Left >= 335 And plane6.Top <= 350 Then
-                plane6.Location = New Point(210, 400)
+                plane6.Location = New Point(190, 400)
                 go_around_6.Hide()
             ElseIf plane6.Left <= 500 And plane6.Top > 350 Then
                 plane6.Left += 7
@@ -1088,9 +1086,8 @@ Public Class Form1
             StopGame()
         End If
 
-
-
         CheckGameOver()
+        CheckCollisions()
     End Sub
 
     Private Sub CheckGameOver()
@@ -1126,11 +1123,116 @@ Public Class Form1
         Return True
     End Function
 
+
+
     Private Sub Gameover()
         gameStart.Enabled = False
         result.AppendText("ゲームオーバー" & Environment.NewLine)
         result.AppendText("着陸機に指示を出さぬまま滑走路を通過しました" & Environment.NewLine)
         result.Show()
+    End Sub
+
+    Private Sub Gameover_nearmiss()
+        ' ゲームを停止する
+        gameStart.Enabled = False
+
+        ' ゲームオーバーのメッセージを表示する
+        result.AppendText("ゲームオーバー" & Environment.NewLine)
+        result.AppendText("ニアミスです" & Environment.NewLine)
+        result.Show()
+    End Sub
+
+    Private Sub CheckCollisions()
+        ' ラベル0の上端が350より上にある場合のみ判定を行う
+        If plane0.Top < 350 AndAlso plane1.Top < 350 Then
+            ' ラベル0とラベル1のx軸の距離を取得
+            Dim distance01 As Integer = Math.Abs(plane1.Left - plane0.Left)
+
+            ' 衝突判定を行う
+            If distance01 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        ' 同様に、ラベル1、2、4、5、6についても同様の処理を行う
+        ' ラベル1の上端が350より上にある場合のみ判定を行う
+        If plane1.Top < 350 AndAlso plane2.Top < 350 Then
+            ' ラベル1とラベル2のx軸の距離を取得
+            Dim distance12 As Integer = Math.Abs(plane2.Left - plane1.Left)
+
+            ' 衝突判定を行う
+            If distance12 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        ' 同様に、ラベル2、4、5、6についても同様の処理を行う
+
+        ' ラベル2、4、5、6の上端が350より上にある場合のみ判定を行う
+        If plane2.Top < 350 AndAlso plane4.Top < 350 Then
+            ' ラベル2とラベル4のx軸の距離を取得
+            Dim distance24 As Integer = Math.Abs(plane4.Left - plane2.Left)
+
+            ' 衝突判定を行う
+            If distance24 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        If plane0.Top > 350 AndAlso plane4.Top > 350 Then
+            ' ラベル2とラベル4のx軸の距離を取得
+            Dim distance04 As Integer = Math.Abs(plane4.Left - plane0.Left)
+
+            ' 衝突判定を行う
+            If distance04 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        If plane1.Top > 350 AndAlso plane4.Top > 350 Then
+            ' ラベル2とラベル4のx軸の距離を取得
+            Dim distance14 As Integer = Math.Abs(plane4.Left - plane1.Left)
+
+            ' 衝突判定を行う
+            If distance14 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        If plane1.Top > 350 AndAlso plane5.Top > 350 Then
+            ' ラベル2とラベル4のx軸の距離を取得
+            Dim distance15 As Integer = Math.Abs(plane5.Left - plane1.Left)
+
+            ' 衝突判定を行う
+            If distance15 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
+        If plane2.Top > 350 AndAlso plane6.Top > 350 Then
+            ' ラベル2とラベル4のx軸の距離を取得
+            Dim distance26 As Integer = Math.Abs(plane2.Left - plane6.Left)
+
+            ' 衝突判定を行う
+            If distance26 <= 48 Then
+                ' ニアミスの場合はゲームオーバー処理を実行
+                Gameover_nearmiss()
+                Return
+            End If
+        End If
+
     End Sub
 
     ' ゲームを停止し、結果を表示するメソッド
@@ -1156,6 +1258,5 @@ Public Class Form1
         ' ここで記録などの処理を行う
         ' 例: TextBoxResults.Text = "記録: 何かの値"
     End Sub
-
 
 End Class
